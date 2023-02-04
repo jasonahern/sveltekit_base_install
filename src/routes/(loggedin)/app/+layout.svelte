@@ -20,7 +20,6 @@
 		<AppBar>
 			<svelte:fragment slot="lead">
 				<SvgFavIcon />
-
 				<strong class="text-xl uppercase">EROSS</strong>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
