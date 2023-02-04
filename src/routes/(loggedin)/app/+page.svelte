@@ -1,7 +1,7 @@
 <script lang="ts">
 	//import type { PageData } from '../../$types'
 	import SvgIcon from '$lib/components/icons/SvgIcon.svelte'
-	import { heartIcon, copyIcon } from '$lib/components/icons/AppIcons'
+	import { copyIcon } from '$lib/components/icons/SvgIcon'
 </script>
 
 Logged in

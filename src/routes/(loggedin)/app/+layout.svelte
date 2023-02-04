@@ -3,7 +3,8 @@
 	// import '@skeletonlabs/skeleton/styles/all.css'
 	// import '../app.postcss'
 	import SvgIcon from '$lib/components/icons/SvgIcon.svelte'
-	import { keyIcon, logoutIcon, userIcon } from '$lib/components/icons/AppIcons'
+	import { keyIcon, logoutIcon, userIcon } from '$lib/components/icons/SvgIcon'
+	import SvgFavIcon from '$lib/components/icons/SvgFavIcon.svelte'
 	import { AppShell, AppBar, LightSwitch, menu } from '@skeletonlabs/skeleton'
 
 	const exampleLink = '/utilities/menus'
@@ -18,7 +19,9 @@
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-				<strong class="text-xl uppercase">Skeleton</strong>
+				<SvgFavIcon />
+
+				<strong class="text-xl uppercase">EROSS</strong>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a

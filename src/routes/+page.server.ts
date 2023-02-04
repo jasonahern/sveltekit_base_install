@@ -18,6 +18,6 @@ export const actions: Actions = {
 			}
 			return fail(400, data)
 		}
-		throw redirect(303, '/')
+		throw redirect(303, '/app')
 	},
 }
