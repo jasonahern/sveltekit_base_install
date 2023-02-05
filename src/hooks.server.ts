@@ -1,4 +1,6 @@
 import type { Handle } from '@sveltejs/kit'
+import { PrismaClient } from '@prisma/client'
+export const prisma = new PrismaClient()
 
 export const handle = (async ({ event, resolve }) => {
 	if (event.url.pathname.startsWith('/custom')) {
