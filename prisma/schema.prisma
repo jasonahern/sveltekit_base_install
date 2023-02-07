@@ -7,9 +7,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model users {
-  userid   Int    @id(map: "PK_users") @default(autoincrement())
-  username String @db.VarChar(150)
-  password String @db.VarChar(500)
-  email    String @db.VarChar(150)
+model Users {
+  UserID        Int          @id @default(autoincrement())
+  Firstname     String       @db.VarChar(150)
+  Lastname      String       @db.VarChar(150)
+  Username      String       @unique @db.VarChar(150)
+  Password      String       @db.VarChar(500)
+  Email         String       @unique @db.VarChar(150)
+  UserProfile   UserProfile? @relation(fields: [UserProfileID], references: [UserProfileID])
+  UserProfileID Int?
+  IsDisabled    Boolean      @default(false)
+  AutoDisable   Boolean      @default(false)
+}
+
+model UserProfile {
+  UserProfileID   Int     @id @default(autoincrement())
+  UserProfileName String  @unique @db.VarChar(500)
+  Users           Users[]
+}
+
+model Menus {
+  MenuID   Int    @id @default(autoincrement())
+  MenuName String @unique @db.VarChar(150)
 }
