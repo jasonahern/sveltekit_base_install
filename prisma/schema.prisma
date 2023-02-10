@@ -14,19 +14,51 @@ model Users {
   Username      String       @unique @db.VarChar(150)
   Password      String       @db.VarChar(500)
   Email         String       @unique @db.VarChar(150)
-  UserProfile   UserProfile? @relation(fields: [UserProfileID], references: [UserProfileID])
-  UserProfileID Int?
   IsDisabled    Boolean      @default(false)
   AutoDisable   Boolean      @default(false)
+  UserProfile   UserProfile? @relation(fields: [UserProfileID], references: [UserProfileID])
+  UserProfileID Int?
 }
 
 model UserProfile {
-  UserProfileID   Int     @id @default(autoincrement())
-  UserProfileName String  @unique @db.VarChar(500)
-  Users           Users[]
+  UserProfileID        Int                    @id @default(autoincrement())
+  ProfileName          String                 @db.VarChar(150)
+  ProfileDescription   String                 @db.VarChar(150)
+  IsObsolete           Boolean                @default(false)
+  UserProfile_UserRole UserProfile_UserRole[]
+  UserID               Users[]
 }
 
-model Menus {
-  MenuID   Int    @id @default(autoincrement())
-  MenuName String @unique @db.VarChar(150)
+model UserProfile_UserRole {
+  UserRole      UserRole?    @relation(fields: [UserRoleID], references: [RoleID])
+  UserRoleID    Int
+  UserProfile   UserProfile? @relation(fields: [UserProfileID], references: [UserProfileID])
+  UserProfileID Int
+
+  @@id([UserRoleID, UserProfileID])
+}
+
+model UserRole {
+  RoleID               Int                     @id @default(autoincrement())
+  RoleName             String                  @db.VarChar(150)
+  RoleDescription      String                  @db.VarChar(150)
+  IsObsolete           Boolean                 @default(false)
+  FeaturesRole         UserFeatures_UserRole[]
+  UserProfile_UserRole UserProfile_UserRole[]
+}
+
+model UserFeatures_UserRole {
+  Role      UserRole?     @relation(fields: [RoleID], references: [RoleID])
+  RoleID    Int
+  Features  UserFeatures? @relation(fields: [FeatureID], references: [FeatureID])
+  FeatureID Int
+
+  @@id([RoleID, FeatureID])
+}
+
+model UserFeatures {
+  FeatureID          Int                     @id @default(autoincrement())
+  FeatureName        String                  @unique @db.VarChar(150)
+  FeatureDescription String                  @db.VarChar(150)
+  FeaturesRole       UserFeatures_UserRole[]
 }
