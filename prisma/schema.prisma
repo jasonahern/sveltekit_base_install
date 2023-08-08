@@ -22,7 +22,7 @@ model Users {
 
 model UserProfile {
   UserProfileID        Int                    @id @default(autoincrement())
-  ProfileName          String                 @db.VarChar(150)
+  ProfileName          String                 @unique @db.VarChar(150)
   ProfileDescription   String                 @db.VarChar(150)
   IsObsolete           Boolean                @default(false)
   UserProfile_UserRole UserProfile_UserRole[]
@@ -40,7 +40,7 @@ model UserProfile_UserRole {
 
 model UserRole {
   RoleID               Int                     @id @default(autoincrement())
-  RoleName             String                  @db.VarChar(150)
+  RoleName             String                  @unique @db.VarChar(150)
   RoleDescription      String                  @db.VarChar(150)
   IsObsolete           Boolean                 @default(false)
   FeaturesRole         UserFeatures_UserRole[]

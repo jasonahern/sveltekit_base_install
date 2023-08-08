@@ -4,10 +4,10 @@
 	import type { ActionData, PageServerData } from './$types'
 	export let data: PageServerData
 	export let form: ActionData
-	console.log(data)
+	console.log(data.post)
 </script>
 
-<pre>{data?.post[0].username}</pre>
+<pre>{JSON.stringify(data?.post)}</pre>
 <section class="bg-gray-50 dark:bg-gray-900">
 	<div class="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
 		<a href="/" class="mb-6 flex items-center text-2xl font-semibold text-gray-900 dark:text-white">
@@ -17,16 +17,12 @@
 			class="w-full rounded-lg bg-white shadow dark:border dark:border-gray-700 dark:bg-gray-800 sm:max-w-md md:mt-0 xl:p-0"
 		>
 			<div class="space-y-4 p-4 sm:p-6 md:space-y-4">
-				<h2
-					class="text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl"
-				>
+				<h2 class="text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl">
 					Sign in
 				</h2>
 				<form class="space-y-4 md:space-y-6" method="POST" use:enhance>
 					<div>
-						<label
-							for="username"
-							class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+						<label for="username" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
 							>Enter Username</label
 						>
 						<input
@@ -44,9 +40,7 @@
 						{/if}
 					</div>
 					<div>
-						<label
-							for="password"
-							class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+						<label for="password" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
 							>Enter Password</label
 						>
 						<input

@@ -19,6 +19,7 @@ export const actions: Actions = {
 		})
 
 		const result = loginSchema.safeParse(formData)
+		console.log(result)
 
 		if (!result.success) {
 			const data = {
